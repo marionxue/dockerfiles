@@ -1,0 +1,16 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: tls-dashboard
+  namespace: devops
+spec:
+  restartPolicy: Never
+  containers:
+  - name: juypterhub
+    image: jupyterhub/jupyterhub
+    ports:
+    - name: juypter
+      containerPort: 8000
+      hostIP: 192.168.10.247
+      hostPort: 18000
