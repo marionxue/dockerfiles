@@ -1,0 +1,22 @@
+version: '2'
+services:
+  elasticserch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:5.2.2
+    container_name: elasticsearch
+    ports:
+    - "9200:9200"
+    networks:
+      - elk
+    
+  kibana:
+    image: docker.elastic.co/kibana/kibana:5.2.2
+    container_name: kibana
+    ports:
+    - "5601:5601"
+    networks:
+    - elk
+    volumes:
+    - kibana.yml:/usr/share/kibana/config/kibana.yml
+networks:
+  elk:
+    driver: bridge
