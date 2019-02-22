@@ -1,11 +1,11 @@
-version: v2
+version: '2'
 services:
-  ssserver35537:
+  ssserver001:
     image: zyfdedh/shadowsocks:latest
-    container_name: ssserver35537
+    container_name: ssserver001
     ports:
-    - '35537:35537'
+    - '35537:35539'
     restart: always
     volumes:
-        - /logs/shadowsocks.log:/var/log/shadowsocks.log
-    command: ["-s 0.0.0.0 -p 35537 -k $password -m rc4-md5 -t 300 --fast-open"]
+    - /var/log/shadowsocks.log:/var/log/shadowsocks.log
+    command: ["-s 0.0.0.0 -p 35539 -k $password -m rc4-md5 -t 300 --fast-open"]
