@@ -15,6 +15,7 @@ services:
       - '8080:8080'
       - '50000:50000'
     container_name: jenkinsci-master
+    restart: always
     # healthcheck:
     #   test: ["CMD", "curl", "-f", "http://localhost"]
     #   interval: 1m30s
