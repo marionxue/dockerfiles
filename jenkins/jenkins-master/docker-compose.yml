@@ -1,17 +1,17 @@
-version: '2'
+version: '2.2'
 services:
   jenkinsci-master:
     build:
       context: .
       dockerfile: dockerfile
-      image: bluerdocker/jenkinsci:$TAG
-      extra_hosts:
-        - 'code.****.com:192.168.128.92'
-        - 'nexus.****.com:192.168.128.90'
       network: bridge
+    extra_hosts:
+      - 'code.****.com:192.168.128.92'
+      - 'nexus.****.com:192.168.128.90'
     dns:
       - 114.114.114.114
-    expose:
+    image: bluerdocker/jenkinsci:$TAG
+    ports:
       - '8080:8080'
       - '50000:50000'
     container_name: jenkinsci-master
