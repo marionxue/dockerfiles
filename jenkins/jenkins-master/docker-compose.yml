@@ -1,0 +1,28 @@
+version: '2'
+services:
+  jenkinsci-master:
+    build:
+      context: .
+      dockerfile: dockerfile
+      image: bluerdocker/jenkinsci:$TAG
+      extra_hosts:
+        - 'code.****.com:192.168.128.92'
+        - 'nexus.****.com:192.168.128.90'
+      network: bridge
+    dns:
+      - 114.114.114.114
+    expose:
+      - '8080:8080'
+      - '50000:50000'
+    container_name: jenkinsci-master
+    # healthcheck:
+    #   test: ["CMD", "curl", "-f", "http://localhost"]
+    #   interval: 1m30s
+    #   timeout: 10s
+    #   retries: 3
+    #   start_period: 40s
+    network_mode: "bridge"
+    volumes:
+        - "/data/jenkins-master:/var/jenkins_home"
+        - "/var/run/docker.sock:/var/run/docker.sock" 
+        - "/usr/share/zoneinfo/Asia/Shanghai:/etc/localtime"
