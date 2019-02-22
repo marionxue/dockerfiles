@@ -1,5 +1,5 @@
-* 配置了分词器 analysis-pinyin 和 ik
-* 配置了reindex需要的白名单
+* 配置了分词器 analysis-pinyin 和 ik, 如果你使用了远程的字典或者本地的词典文件,请更新词典文件
+* 配置了reindex需要的白名单,所以你需要修改elasticsearch.yml中白名单的ip以及端口
 
 ```
 cd /root
