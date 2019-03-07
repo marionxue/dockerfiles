@@ -1,0 +1,9 @@
+redis-master:
+  image: redis:3
+  restart: always
+  hostname: qa-redis-master
+  container_name: qa-redis-master
+  volumes:
+    - "/data/redis:/data:rw"
+  ports:
+    - "6379:6379"

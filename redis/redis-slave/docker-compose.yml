@@ -1,0 +1,12 @@
+redis-slave:
+  image: redis:3
+  restart: always
+  hostname: qa-redis-slave
+  container_name: qa-redis-slave
+  command: redis-server --slaveof qa-redis-master 6379
+  extra_hosts:
+    - "qa-redis-master:192.168.64.68"
+  volumes:
+    - "/data/redis:/data:rw"
+  ports:
+    - "6379:6379"
