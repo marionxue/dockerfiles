@@ -1,0 +1,42 @@
+version: "3"
+services:
+  rabbitmq:
+    image: rabbitmq:3.6.6-management
+    labels:
+      author: docker@docker.io
+      common: rabbitmq 
+    logging:
+      driver: "journald"
+    network_mode: "bridge"
+    volumes:
+      - "/apps/rabbitmq/config/rabbitmq.config:/etc/rabbitmq/rabbitmq.config"
+      - "/data/rabbitmq/data:/var/lib/rabbitmq/mnesia"
+      - "/var/log/rabbitmq:/var/log/rabbitmq"
+    environment:
+      TZ: "Asia/Shanghai"
+      RABBITMQ_ERLANG_COOKIE: "EUSGHAVXEBVIQAVUZOIU"
+      RABBITMQ_DEFAULT_USER: "guest"
+      RABBITMQ_DEFAULT_PASS: "guest"
+      RABBITMQ_LOG_BASE: "/var/log/rabbitmq"
+    extra_hosts:
+      - "rabbitmq100:192.168.30.3"
+      - "rabbitmq101:192.168.30.4"
+      - "rabbitmq102:192.168.30.5"
+      - "7-2:192.168.7.2"
+      - "7-3:192.168.7.3"
+      - "7-15:192.168.7.15"
+    ports:
+      - "5671:5671"
+      - "5672:5672"
+      - "4369:4369"
+      - "25672:25672"
+      - "15672:15672"
+      - "61613:61613"
+      - "61614:61614"
+      - "1883:1883"
+      - "8883:8883"
+      - "15674:15674"
+      - "15675:15675"
+    restart: always
+    hostname: rabbitmq100
+    container_name: rabbitmq
