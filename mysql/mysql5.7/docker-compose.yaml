@@ -1,0 +1,14 @@
+version: v2
+services:
+  mysql:
+    container_name: devops-mysql
+    image: mysql/mysql-server:5.7
+    restart: always
+    ports:
+    - "3306:3306"
+    environment:
+    - MYSQL_ROOT_HOST=%
+    - MYSQL_ROOT_PASSWORD=$password
+    volumes:
+    - /apps/mysql/my.cnf:/etc/my.cnf
+    - /apps/mysql:/var/lib/mysql
