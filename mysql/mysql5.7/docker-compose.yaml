@@ -1,14 +1,14 @@
 version: '2'
 services:
   mysql:
-    container_name: devops-mysql
+    container_name: ocean-db
     image: mysql/mysql-server:5.7
     restart: always
     ports:
     - "3306:3306"
     environment:
-    - MYSQL_ROOT_HOST=%
-    - MYSQL_ROOT_PASSWORD=password
+    - MYSQL_ROOT_HOST='192.168.20.%'
+    - MYSQL_ROOT_PASSWORD=6RPf6WNcor7WFSMK
     volumes:
     - /apps/mysql/my.cnf:/etc/my.cnf
     - /data/mysql:/var/lib/mysql
