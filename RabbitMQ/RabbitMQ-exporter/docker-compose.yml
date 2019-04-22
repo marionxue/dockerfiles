@@ -1,0 +1,13 @@
+version: '2'
+services:
+  rabbitmq-metric:
+    image: kbudde/rabbitmq-exporter
+    container_name: rabbitmq-metric
+    environment:
+      - RABBIT_CAPABILITIES:"bert,no_sort"
+      - RABBIT_URL:"http://192.168.64.65:15672"
+      - RABBIT_USER:guest
+      - RABBIT_PASSWORD:guest
+      - PUBLISH_PORT:9090
+    ports:
+    - "9090:9090"
